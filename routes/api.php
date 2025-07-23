@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DashboardController;
 
 // Endpoint untuk ambil data user login (opsional)
 Route::get('/user', function (Request $request) {
@@ -19,3 +20,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Tambah endpoint lain di sini (misalnya: /products, /categories, dll)
 });
+
+// Dashboard API untuk admin
+Route::middleware('auth:sanctum')->get('/dashboard/summary', [DashboardController::class, 'summary']);
